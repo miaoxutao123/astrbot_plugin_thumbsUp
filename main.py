@@ -4,7 +4,7 @@ from astrbot.api import logger
 from astrbot.api.all import *
 import json
 
-@register("helloworld", "Your Name", "一个简单的 Hello World 插件", "1.0.0", "repo url")
+@register("点赞", "喵喵", "点赞测试", "0.1", "https://github.com/miaoxutao123/astrbot_plugin_thumbsUp")
 class MyPlugin(Star):
     def __init__(self, context: Context,config: dict):
         super().__init__(context)
@@ -20,9 +20,11 @@ class MyPlugin(Star):
             from astrbot.core.platform.sources.aiocqhttp.aiocqhttp_message_event import AiocqhttpMessageEvent
             assert isinstance(event, AiocqhttpMessageEvent)
             client = event.bot # 得到 client
+            message_id = event.get_message_id()
             payloads = {
-            "user_id": event.get_sender_id(),
-            "times": num
+                "message_id": message_id,  # 添加 message_id
+                "user_id": event.get_sender_id(),
+                "times": num
             }
             ret = await client.api.call_action('delete_msg', **payloads) # 调用 协议端  API
             logger.info(f"delete_msg: {ret}")
