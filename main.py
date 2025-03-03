@@ -20,10 +20,10 @@ class MyPlugin(Star):
             from astrbot.core.platform.sources.aiocqhttp.aiocqhttp_message_event import AiocqhttpMessageEvent
             assert isinstance(event, AiocqhttpMessageEvent)
             client = event.bot # 得到 client
-            payloads = json.dumps({
+            payloads = {
             "user_id": event.get_sender_id(),
             "times": num
-            })
+            }
             ret = await client.api.call_action('delete_msg', **payloads) # 调用 协议端  API
             logger.info(f"delete_msg: {ret}")
             yield event.plain_result(f"{response_str}")
