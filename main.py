@@ -20,7 +20,7 @@ class MyPlugin(Star):
             from astrbot.core.platform.sources.aiocqhttp.aiocqhttp_message_event import AiocqhttpMessageEvent
             assert isinstance(event, AiocqhttpMessageEvent)
             client = event.bot # 得到 client
-            message_id = event.get_message_id()
+            message_id = event.message_obj.message_id()
             payloads = {
                 "message_id": message_id,  # 添加 message_id
                 "user_id": event.get_sender_id(),
