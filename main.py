@@ -4,14 +4,14 @@ from astrbot.api import logger
 from astrbot.api.all import *
 import json
 
-@register("点赞", "喵喵", "点赞测试", "0.1", "https://github.com/miaoxutao123/astrbot_plugin_thumbsUp")
+@register("点赞", "喵喵", "点赞", "1.0", "https://github.com/miaoxutao123/astrbot_plugin_thumbsUp")
 class MyPlugin(Star):
     def __init__(self, context: Context,config: dict):
         super().__init__(context)
         self.tunum = config.get("thnum")
         self.response_str = config.get("response_str")
-    # 注册指令的装饰器。指令名为 helloworld。注册成功后，发送 `/helloworld` 就会触发这个指令，并回复 `你好, {user_name}!`
-    @filter.command("点赞")
+
+    @filter.command("赞我")
     async def helloworld(self, event: AstrMessageEvent):
         num = self.tunum
         response_str = self.response_str
