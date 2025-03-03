@@ -1,0 +1,12 @@
+{
+    "thnum": {
+        "description": "一次性点赞次数",
+        "type": "int",
+        "default": 10
+    },
+    "response_str": {
+        "description": "自定义回复内容",
+        "type": "string",
+        "default": "已赞"
+    }
+}
