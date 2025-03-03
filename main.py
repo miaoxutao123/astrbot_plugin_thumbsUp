@@ -21,10 +21,9 @@ class MyPlugin(Star):
             assert isinstance(event, AiocqhttpMessageEvent)
             client = event.bot # 得到 client
             payloads = {
-                "message_id": event.message_obj.message_id,  # 添加 message_id
                 "user_id": event.get_sender_id(),
                 "times": num
             }
-            ret = await client.api.call_action('delete_msg', **payloads) # 调用 协议端  API
-            logger.info(f"delete_msg: {ret}")
+            ret = await client.api.call_action('send_like', **payloads) # 调用 协议端  API
+            logger.info(f"send_like: {ret}")
             yield event.plain_result(f"{response_str}")
