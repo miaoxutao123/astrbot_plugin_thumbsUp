@@ -6,7 +6,7 @@ import json
 
 @register("helloworld", "Your Name", "一个简单的 Hello World 插件", "1.0.0", "repo url")
 class MyPlugin(Star):
-    def __init__(self, context: Context):
+    def __init__(self, context: Context,config: dict):
         super().__init__(context)
         self.tunum = config.get("thnum")
         self.response_str = config.get("response_str")
