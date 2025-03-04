@@ -68,7 +68,7 @@ class GroupChatCounter(Star):
             self.counter[period_type] = {k: v for k, v in self.counter[period_type].items() if k == current_period}
         self.save_data()
 
-    @filter.event_message_type("GROUP_MESSAGE")
+    @filter.event_message_type(EventMessageType.GROUP_MESSAGE)  # 使用枚举类型
     async def on_group_message(self, event: AstrMessageEvent):
         """监听群聊消息并统计发言次数"""
         user_id = event.get_sender_id()
